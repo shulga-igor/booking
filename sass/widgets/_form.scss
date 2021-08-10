@@ -47,13 +47,13 @@
 
                 &.input-date {
                     border-right: 2px solid #ccc;
-                    background: url('/img/calendar.svg') no-repeat;
+                    background: url('../img/calendar.svg') no-repeat;
                     background-size: 26px;
                     background-position: 12px center;
 
                 }
                 &.input-time {
-                    background: url('/img/clock.svg') no-repeat;
+                    background: url('../img/clock.svg') no-repeat;
                     background-size: 26px;
                     background-position: 12px center;
 
@@ -189,7 +189,7 @@
         cursor: pointer;
         span{
             position: static!important;
-            background: url('/img/arrow.png') 0px 0px no-repeat !important;
+            background: url('../img/arrow.png') 0px 0px no-repeat !important;
             width: 12px!important;
             height: 22px!important;
             margin: 0!important
@@ -209,7 +209,7 @@
         cursor: pointer;
         span{
             position: static!important;
-            background: url('/img/arrow.png') 0px 0px no-repeat !important;
+            background: url('../img/arrow.png') 0px 0px no-repeat !important;
             width: 12px!important;
             height: 22px!important;
             margin: 0!important;
