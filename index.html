@@ -1,0 +1,669 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Booking</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#3c5ae4">
+
+  <style>
+    .loader{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #fff;
+      z-index: 1000;
+      display: flex;
+
+    }
+    .ouro {
+      position: relative;
+      display:inline-block;
+      margin: auto;
+      height: 46px;
+      width: 46px;
+      border-radius: 50%;  
+      background: none repeat scroll 0 0 #DDDDDD;
+      overflow:hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,.1) inset, 0 0 25px rgba(0,0,255,0.075);
+  }
+
+  .ouro:after {
+      content: "";
+      position: absolute;
+      top: 9px; left: 9px;
+      display: block;
+      height: 28px; width: 28px;
+      background: none repeat scroll 0 0 #F2F2F2;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,.1);
+  }
+  .ouro > span {
+      position: absolute;
+      height: 100%; width: 50%;
+      overflow: hidden;
+  }
+  .left  { left:0   }
+  .right { left:50% }
+
+  .anim {
+      position: absolute;
+      left: 100%; top: 0;
+      height: 100%; width: 100%;
+      border-radius: 999px;
+      background: none repeat scroll 0 0 #508EC3;
+      opacity: 0.8;
+      -webkit-animation: ui-spinner-rotate-left 3s infinite;
+      animation: ui-spinner-rotate-left 3s infinite;
+      -webkit-transform-origin: 0 50% 0;
+      transform-origin: 0 50% 0;
+  }
+  .left .anim {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+  }
+  .right .anim {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+      left: -100%;
+      -webkit-transform-origin: 100% 50% 0;
+      transform-origin: 100% 50% 0;
+  }
+    @keyframes ui-spinner-rotate-right{
+    0%{transform:rotate(0deg)}
+    25%{transform:rotate(180deg)}
+    50%{transform:rotate(180deg)}
+    75%{transform:rotate(360deg)}
+    100%{transform:rotate(360deg)}
+  }
+  @keyframes ui-spinner-rotate-left{
+    0%{transform:rotate(0deg)}
+    25%{transform:rotate(0deg)}
+    50%{transform:rotate(180deg)}
+    75%{transform:rotate(180deg)}
+    100%{transform:rotate(360deg)}
+  }
+  </style>
+
+  
+</head>
+
+<body>
+  
+  <div class="loader">
+    <span class="ouro">
+      <span class="left"><span class="anim"></span></span>
+      <span class="right"><span class="anim"></span></span>
+    </span>
+  </div>
+  
+
+  <div class="wrapper">
+ 
+    <header class="header">
+      <div class="container">
+        <div class="inner">
+          <div class="logo">
+            <a href="/">
+              <img src="/img/logo_white.png" alt="logo">
+            </a>
+          </div>
+  
+          <nav class="navigation">
+            <ul>
+              <li><a href="">HOME</a></li>
+              <li><a href="">CAMPING</a></li>
+              <li><a href="">SERVICES</a></li>
+              <li><a href="">REVIEWS</a></li>
+              <li><a href="">PRICING</a></li>
+              <li><a href="">ABOUT US</a></li>
+              <li><a href="">VEHICLES</a></li>
+              <li><a href="">MERCH</a></li>
+              <li><a href="">COVID</a></li>
+              <li><a href="">CONTACT</a></li>
+            </ul>
+            <a href="" class="btn">Book Now</a>
+          </nav>
+  
+          <div class="social">
+            <a href=""><svg viewBox="0 0 24 24"><path d="m15.997 3.985h2.191v-3.816c-.378-.052-1.678-.169-3.192-.169-3.159 0-5.323 1.987-5.323 5.639v3.361h-3.486v4.266h3.486v10.734h4.274v-10.733h3.345l.531-4.266h-3.877v-2.939c.001-1.233.333-2.077 2.051-2.077z"/></svg></a>
+            <a href=""><svg viewBox="0 0 511 511.9"><path d="m510.949219 150.5c-1.199219-27.199219-5.597657-45.898438-11.898438-62.101562-6.5-17.199219-16.5-32.597657-29.601562-45.398438-12.800781-13-28.300781-23.101562-45.300781-29.5-16.296876-6.300781-34.898438-10.699219-62.097657-11.898438-27.402343-1.300781-36.101562-1.601562-105.601562-1.601562s-78.199219.300781-105.5 1.5c-27.199219 1.199219-45.898438 5.601562-62.097657 11.898438-17.203124 6.5-32.601562 16.5-45.402343 29.601562-13 12.800781-23.097657 28.300781-29.5 45.300781-6.300781 16.300781-10.699219 34.898438-11.898438 62.097657-1.300781 27.402343-1.601562 36.101562-1.601562 105.601562s.300781 78.199219 1.5 105.5c1.199219 27.199219 5.601562 45.898438 11.902343 62.101562 6.5 17.199219 16.597657 32.597657 29.597657 45.398438 12.800781 13 28.300781 23.101562 45.300781 29.5 16.300781 6.300781 34.898438 10.699219 62.101562 11.898438 27.296876 1.203124 36 1.5 105.5 1.5s78.199219-.296876 105.5-1.5c27.199219-1.199219 45.898438-5.597657 62.097657-11.898438 34.402343-13.300781 61.601562-40.5 74.902343-74.898438 6.296876-16.300781 10.699219-34.902343 11.898438-62.101562 1.199219-27.300781 1.5-36 1.5-105.5s-.101562-78.199219-1.300781-105.5zm-46.097657 209c-1.101562 25-5.300781 38.5-8.800781 47.5-8.601562 22.300781-26.300781 40-48.601562 48.601562-9 3.5-22.597657 7.699219-47.5 8.796876-27 1.203124-35.097657 1.5-103.398438 1.5s-76.5-.296876-103.402343-1.5c-25-1.097657-38.5-5.296876-47.5-8.796876-11.097657-4.101562-21.199219-10.601562-29.398438-19.101562-8.5-8.300781-15-18.300781-19.101562-29.398438-3.5-9-7.699219-22.601562-8.796876-47.5-1.203124-27-1.5-35.101562-1.5-103.402343s.296876-76.5 1.5-103.398438c1.097657-25 5.296876-38.5 8.796876-47.5 4.101562-11.101562 10.601562-21.199219 19.203124-29.402343 8.296876-8.5 18.296876-15 29.398438-19.097657 9-3.5 22.601562-7.699219 47.5-8.800781 27-1.199219 35.101562-1.5 103.398438-1.5 68.402343 0 76.5.300781 103.402343 1.5 25 1.101562 38.5 5.300781 47.5 8.800781 11.097657 4.097657 21.199219 10.597657 29.398438 19.097657 8.5 8.300781 15 18.300781 19.101562 29.402343 3.5 9 7.699219 22.597657 8.800781 47.5 1.199219 27 1.5 35.097657 1.5 103.398438s-.300781 76.300781-1.5 103.300781zm0 0"/><path d="m256.449219 124.5c-72.597657 0-131.5 58.898438-131.5 131.5s58.902343 131.5 131.5 131.5c72.601562 0 131.5-58.898438 131.5-131.5s-58.898438-131.5-131.5-131.5zm0 216.800781c-47.097657 0-85.300781-38.199219-85.300781-85.300781s38.203124-85.300781 85.300781-85.300781c47.101562 0 85.300781 38.199219 85.300781 85.300781s-38.199219 85.300781-85.300781 85.300781zm0 0"/><path d="m423.851562 119.300781c0 16.953125-13.746093 30.699219-30.703124 30.699219-16.953126 0-30.699219-13.746094-30.699219-30.699219 0-16.957031 13.746093-30.699219 30.699219-30.699219 16.957031 0 30.703124 13.742188 30.703124 30.699219zm0 0"/></svg></a>
+          </div>
+
+          <div class="mobile-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        
+      </div>
+    </header>
+
+    <main>
+
+     <div class="main-blc">
+       <div class="container">
+
+        <h1 class="title">Ready to book now?</h1>
+        <h3 class="sub-title">Just a few details needed</h3>
+
+        <div class="slider">
+          <div class="slider-top">
+            <div class="list">
+              <div class="list-item active" data-step='1'>
+                <div class="count">1</div>
+                <div class="text">Select product</div>
+                <div class="line"></div>
+              </div>
+              <div class="list-item" data-step='2'>
+                <div class="count">2</div>
+                <div class="text">Select dates</div>
+                <div class="line"></div>
+              </div>
+              <div class="list-item" data-step='3'>
+                <div class="count">3</div>
+                <div class="text">Select addons</div>
+                <div class="line"></div>
+              </div>
+              <div class="list-item" data-step='4'>
+                <div class="count">4</div>
+                <div class="text">Confirm details</div>
+                <div class="line"></div>
+              </div>
+              <div class="list-item">
+                <div class="count">5</div>
+              </div>
+            </div>
+          </div>
+
+          <form action="">
+            <div class="slider-content">
+
+              <div class="slider-item" >
+                <h2 class="slider-title">What would you like to do?</h2>
+
+                <div class="list">
+                  <div class="list-item">
+                    <label>
+                      <input type="radio" name="like" class="js-step-select" value="Go Camping">
+                      <div class="wrap-blc">
+                        <div class="icon">
+                          <svg width="510" height="398" viewBox="0 0 510 398" xmlns="http://www.w3.org/2000/svg"><path d="M379.215 55.377V.756h-30V43.3h-188.43V.756h-30v54.622L0 378.283v18.961h510v-18.961L379.215 55.377zm-248.43 79.915v231.953H36.838l93.947-231.953zm30 231.953V135.292l93.947 231.953h-93.947zm126.314-.001L168.044 73.3h186.062l119.055 293.944H287.099z" fill="#FFF" fill-rule="nonzero"/></svg>
+                        </div>
+                        <span class="text">Go Camping</span>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="list-item">
+                    <label>
+                      <input type="radio" name="like" class="js-step-select" value="Self Drive">
+                      <div class="wrap-blc">
+                        <div class="icon">
+                          <svg width="493" height="472" viewBox="0 0 493 472" xmlns="http://www.w3.org/2000/svg"><g fill="#FFF" fill-rule="nonzero"><path d="M148.667 172.333c-17.643 0-32 14.357-32 32s14.357 32 32 32 32-14.357 32-32-14.358-32-32-32zM343 172.333c-17.643 0-32 14.357-32 32s14.357 32 32 32 32-14.357 32-32-14.357-32-32-32z"/><path d="M97 321.667c-5.888 0-10.667 4.779-10.667 10.667V439c0 5.888-4.8 10.667-10.667 10.667H33c-5.867 0-10.667-4.779-10.667-10.667V332.333c0-5.888-4.779-10.667-10.667-10.667S1 326.445 1 332.333V439c0 17.643 14.357 32 32 32h42.667c17.643 0 32-14.357 32-32V332.333c0-5.888-4.779-10.666-10.667-10.666z" stroke="#FFF" stroke-width="2"/><path d="M481 257.667H11.667C5.779 257.667 1 262.482 1 268.417v53.75c0 4.622 2.944 8.728 7.296 10.19l32 10.751a10.55 10.55 0 003.371.56h66.325l8.661 34.85c1.173 4.795 5.461 8.149 10.347 8.149h234.667c4.885 0 9.173-3.354 10.368-8.148l8.64-34.852H449a10.55 10.55 0 003.371-.559l32-10.75c4.352-1.463 7.296-5.569 7.296-10.192v-53.75c0-5.934-4.779-10.749-10.667-10.749zm-10.667 56.76l-23.061 7.74h-72.939c-4.885 0-9.173 3.355-10.347 8.149l-8.64 34.851H137.341l-8.661-34.851c-1.173-4.794-5.461-8.148-10.347-8.148H45.395l-23.061-7.74v-35.261h448v35.26h-.001z" stroke="#FFF" stroke-width="2"/><path d="M429.331 135.832c-5.589-1.12-137.045-27.498-182.997-27.498-45.952 0-177.409 26.377-182.998 27.498-5.824 1.175-9.792 8.174-8.875 15.636.917 7.463 6.485 12.492 12.203 11.372 1.344-.273 135.381-27.17 179.669-27.17 44.288 0 178.325 26.897 179.669 27.17a8.841 8.841 0 001.685.164c5.141 0 9.685-4.811 10.517-11.536.919-7.463-3.071-14.46-8.873-15.636z"/><path d="M483.56 193.987l-34.603-8.661-.021-24.683c-6.08-62.912-17.749-139.605-38.827-147.605C390.077 5.422 270.376 2.222 246.077 1.667c-23.787.555-143.488 3.755-163.541 11.371-21.077 8-32.747 84.672-38.869 148.629v23.659l-34.581 8.661A10.674 10.674 0 001 204.333v64C1 274.221 5.779 279 11.667 279h74.667c3.093 0 6.037-1.365 8.064-3.691a10.584 10.584 0 002.496-8.491l-10.667-74.667c-.747-5.247-5.248-9.151-10.56-9.151H64.979l-.021-20.309c5.44-56.469 17.28-122.304 25.173-129.728C102.952 28.099 192.893 24.28 246.077 23c53.696 1.28 143.637 5.099 155.413 9.408 8.939 7.979 20.779 73.813 26.176 129.259V183H417a10.662 10.662 0 00-10.56 9.173l-10.667 74.667a10.607 10.607 0 002.496 8.491 10.709 10.709 0 008.064 3.669H481c5.888 0 10.667-4.779 10.645-10.667v-64c0-4.906-3.328-9.152-8.085-10.346zM66.429 204.333l7.616 53.333H22.333v-44.992l33.323-8.341h10.773zm403.904 53.334h-51.712l7.616-53.333h10.773l33.323 8.341v44.992zM481 321.667c-5.888 0-10.667 4.779-10.667 10.667V439c0 5.888-4.8 10.667-10.667 10.667H417c-5.867 0-10.667-4.779-10.667-10.667V332.333c0-5.888-4.779-10.667-10.667-10.667s-10.667 4.779-10.667 10.667V439c0 17.643 14.357 32 32 32h42.667c17.643 0 32-14.357 32-32V332.333c.001-5.888-4.778-10.666-10.666-10.666z" stroke="#FFF" stroke-width="2"/></g></svg>
+                        </div>
+                        <span  class="text">Self Drive</span>
+                      </div>
+                      
+                    </label>
+                  </div>
+
+                  <div class="list-item">
+                    <label>
+                      <input type="radio" name="like" class="js-step-select" value="Wedding Hire">
+                      <div class="wrap-blc">
+                        <div class="icon">
+                          <svg width="513" height="513" viewBox="0 0 513 513" xmlns="http://www.w3.org/2000/svg"><g fill="#FFF" fill-rule="nonzero"><path d="M406.428 167.05a15.99 15.99 0 0012.074 0c3.814-1.554 93.417-38.814 93.417-104.454 0-34.388-28.368-62.364-63.238-62.364-13.113 0-25.706 3.983-36.216 11.233C401.955 4.215 389.362.232 376.249.232c-34.87 0-63.238 27.976-63.238 62.364 0 65.64 89.602 102.9 93.417 104.454zM376.249 32.232c9.318 0 18.084 4.006 24.049 10.99a16.002 16.002 0 0024.334 0c5.965-6.984 14.73-10.99 24.049-10.99 17.225 0 31.238 13.621 31.238 30.364 0 33.391-44.068 61.098-67.346 72.094-17.481-8.46-67.563-35.874-67.563-72.094.001-16.743 14.014-30.364 31.239-30.364zM348.359 176.282c-26.227-36.072-62.082-61.243-104.154-72.989-35.897-9.942-73.122-9.588-107.648 1.023-32.317 9.932-61.746 28.539-85.104 53.809-23.283 25.189-39.507 55.869-46.918 88.723-7.875 34.914-5.461 71.468 6.983 105.72 22.612 63.653 77.84 111.22 144.146 124.14l.149.028c12.28 2.272 23.398 3.307 28.531 3.307 8.836 0 16-7.164 16-16s-7.164-16-16-16c-2.414 0-11.459-.695-22.64-2.76-55.234-10.792-101.231-50.437-120.051-103.48l-.042-.118c-20.552-56.518-8.088-117.019 33.341-161.839 41.576-44.98 101.654-62.069 160.68-45.723 28.734 8.022 54.04 23.638 74.329 45.679-76.141 15.957-133.497 83.618-133.497 164.431 0 92.636 75.364 168 168 168s168-75.364 168-168c.001-91.334-73.261-165.874-164.105-167.951zm-3.894 303.95c-25.163 0-48.746-6.877-68.983-18.839 70.926-34.072 115.371-109.526 108.296-189.441-.643-7.849-2.189-20.053-5.906-33.729l-.073-.268c-2.017-8.286-10.228-13.582-18.673-11.895-8.665 1.729-14.289 10.154-12.562 18.82.04.198.171.79.428 1.735 3.086 11.355 4.366 21.492 4.896 27.997l.01.114c6.391 71.975-37.449 139.622-105.109 164.034-23.708-24.49-38.324-57.833-38.324-94.53 0-74.991 61.01-136 136-136 74.99 0 136 61.009 136 136s-61.01 136.002-136 136.002zm33.359-242.166c.063.26.1.447.122.557a16.136 16.136 0 00-.122-.557z"/></g></svg>
+                        </div>
+                        <span class="text">Wedding Hire</span>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="list-item">
+                    <label>
+                      <input type="radio" name="like" class="js-step-select" value="Photoshoot">
+                      <div class="wrap-blc">
+                        <div class="icon">
+                          <svg width="489" height="428" viewBox="0 0 489 428" xmlns="http://www.w3.org/2000/svg"><g fill="#FFF" fill-rule="nonzero"><path d="M244.236 107.374c-67.335 0-122.118 54.783-122.118 122.118S176.902 351.61 244.236 351.61s122.118-54.783 122.118-122.118-54.783-122.118-122.118-122.118zm0 213.706c-50.505 0-91.588-41.083-91.588-91.588 0-50.505 41.083-91.588 91.588-91.588 50.505 0 91.588 41.083 91.588 91.588 0 50.505-41.083 91.588-91.588 91.588z"/><path d="M488.292 107.292c-.015-25.214-20.572-45.733-45.794-45.733H375.61L349.284 8.956A15.271 15.271 0 00335.629.522H152.453a15.254 15.254 0 00-13.655 8.434l-26.296 52.618-66.782.089C20.512 61.708 0 82.243 0 107.442v274.714c0 25.244 20.542 45.778 45.794 45.778h396.867c25.252 0 45.794-20.55 45.794-45.808l-.163-274.834zm-45.63 290.122H45.795c-8.422 0-15.265-6.84-15.265-15.259V107.441c0-8.405 6.842-15.244 15.235-15.259l76.204-.104a15.287 15.287 0 0013.64-8.434L161.89 31.04h164.304l26.326 52.603a15.271 15.271 0 0013.655 8.434h76.324c8.408 0 15.444 6.84 15.444 15.244V382.14c-.001 8.419-6.859 15.274-15.281 15.274z"/></g></svg>
+                        </div>
+                        <span class="text">Photoshoot</span>
+                      </div>
+                    </label>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="slider-item" style="display: none;">
+
+                <h2 class="slider-title">What dates would you like?</h2>
+
+                <div class="date-list-items">
+                  <div class="item">
+                    <h4 class="input-title">Pick Up Date</h4>
+
+                    <div class="wrap-input">
+                      <input type="text" class="input-field input-date js-date-start">
+                      <div class="blc-time">
+                        <input type="text" class="input-field input-time js-time-start">
+                        <div class="time-blc-popup">
+                          <span class="text">Drop of time</span>
+                          <div class="wrap-select">
+                            <select name="start-time" class="select-time">
+                              <option value="00:00 AM">00:00 AM</option>
+                              <option value="00:30 AM">00:30 AM</option>
+                              <option value="01:00 AM">01:00 AM</option>
+                              <option value="01:30 AM">01:30 AM</option>
+                              <option value="02:00 AM">02:00 AM</option>
+                              <option value="02:30 AM">02:30 AM</option>
+                              <option value="03:00 AM">03:00 AM</option>
+                              <option value="03:30 AM">03:30 AM</option>
+                              <option value="04:00 AM">04:00 AM</option>
+                              <option value="04:30 AM">04:30 AM</option>
+                              <option value="05:00 AM">05:00 AM</option>
+                              <option value="05:30 AM">05:30 AM</option>
+                              <option value="06:00 AM">06:00 AM</option>
+                              <option value="06:30 AM">06:30 AM</option>
+                              <option value="07:00 AM">07:00 AM</option>
+                              <option value="07:30 AM">07:30 AM</option>
+                              <option value="08:00 AM">08:00 AM</option>
+                              <option value="08:30 AM">08:30 AM</option>
+                              <option value="09:00 AM">09:00 AM</option>
+                              <option value="09:30 AM">09:30 AM</option>
+                              <option value="10:00 AM">10:00 AM</option>
+                              <option value="10:30 AM">10:30 AM</option>
+                              <option value="11:00 AM">11:00 AM</option>
+                              <option value="11:30 AM">11:30 AM</option>
+                              <option value="12:00 AM">12:00 AM</option>
+                              <option value="12:30 AM">12:30 AM</option>
+                              <option value="1:00 PM">1:00 PM</option>
+                              <option value="1:30 PM">1:30 PM</option>
+                              <option value="2:00 PM">2:00 PM</option>
+                              <option value="2:30 PM">2:30 PM</option>
+                              <option value="3:00 PM">3:00 PM</option>
+                              <option value="3:30 PM">3:30 PM</option>
+                              <option value="4:00 PM">4:00 PM</option>
+                              <option value="4:30 PM">4:30 PM</option>
+                              <option value="5:00 PM">5:00 PM</option>
+                              <option value="5:30 PM">5:30 PM</option>
+                              <option value="6:00 PM">6:00 PM</option>
+                              <option value="6:30 PM">6:30 PM</option>
+                              <option value="7:00 PM">7:00 PM</option>
+                              <option value="7:30 PM">7:30 PM</option>
+                              <option value="8:00 PM">8:00 PM</option>
+                              <option value="8:30 PM">8:30 PM</option>
+                              <option value="9:00 PM">9:00 PM</option>
+                              <option value="9:30 PM">9:30 PM</option>
+                              <option value="10:00 PM">10:00 PM</option>
+                              <option value="10:30 PM">10:30 PM</option>
+                              <option value="11:00 PM">11:00 PM</option>
+                              <option value="11:30 PM">11:30 PM</option>
+                              <option value="12:00 PM">12:00 PM</option>
+                            </select>
+                          </div>
+                          
+                          <button type="button" class="js-close-time">Confirm</button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div class="item">
+                    <h4 class="input-title">Drop Off Date</h4>
+                    <div class="wrap-input">
+                      <input type="text" class="input-field input-date js-date-end">
+                      <div class="blc-time">
+                        <input type="text" class="input-field input-time js-time-end">
+                        <div class="time-blc-popup">
+                          <span class="text">Drop of time</span>
+                          <div class="wrap-select">
+                            <select name="end-time" class="select-time">
+                              <option value="00:00 AM">00:00 AM</option>
+                              <option value="00:30 AM">00:30 AM</option>
+                              <option value="01:00 AM">01:00 AM</option>
+                              <option value="01:30 AM">01:30 AM</option>
+                              <option value="02:00 AM">02:00 AM</option>
+                              <option value="02:30 AM">02:30 AM</option>
+                              <option value="03:00 AM">03:00 AM</option>
+                              <option value="03:30 AM">03:30 AM</option>
+                              <option value="04:00 AM">04:00 AM</option>
+                              <option value="04:30 AM">04:30 AM</option>
+                              <option value="05:00 AM">05:00 AM</option>
+                              <option value="05:30 AM">05:30 AM</option>
+                              <option value="06:00 AM">06:00 AM</option>
+                              <option value="06:30 AM">06:30 AM</option>
+                              <option value="07:00 AM">07:00 AM</option>
+                              <option value="07:30 AM">07:30 AM</option>
+                              <option value="08:00 AM">08:00 AM</option>
+                              <option value="08:30 AM">08:30 AM</option>
+                              <option value="09:00 AM">09:00 AM</option>
+                              <option value="09:30 AM">09:30 AM</option>
+                              <option value="10:00 AM">10:00 AM</option>
+                              <option value="10:30 AM">10:30 AM</option>
+                              <option value="11:00 AM">11:00 AM</option>
+                              <option value="11:30 AM">11:30 AM</option>
+                              <option value="12:00 AM">12:00 AM</option>
+                              <option value="12:30 AM">12:30 AM</option>
+                              <option value="1:00 PM">1:00 PM</option>
+                              <option value="1:30 PM">1:30 PM</option>
+                              <option value="2:00 PM">2:00 PM</option>
+                              <option value="2:30 PM">2:30 PM</option>
+                              <option value="3:00 PM">3:00 PM</option>
+                              <option value="3:30 PM">3:30 PM</option>
+                              <option value="4:00 PM">4:00 PM</option>
+                              <option value="4:30 PM">4:30 PM</option>
+                              <option value="5:00 PM">5:00 PM</option>
+                              <option value="5:30 PM">5:30 PM</option>
+                              <option value="6:00 PM">6:00 PM</option>
+                              <option value="6:30 PM">6:30 PM</option>
+                              <option value="7:00 PM">7:00 PM</option>
+                              <option value="7:30 PM">7:30 PM</option>
+                              <option value="8:00 PM">8:00 PM</option>
+                              <option value="8:30 PM">8:30 PM</option>
+                              <option value="9:00 PM">9:00 PM</option>
+                              <option value="9:30 PM">9:30 PM</option>
+                              <option value="10:00 PM">10:00 PM</option>
+                              <option value="10:30 PM">10:30 PM</option>
+                              <option value="11:00 PM">11:00 PM</option>
+                              <option value="11:30 PM">11:30 PM</option>
+                              <option value="12:00 PM">12:00 PM</option>
+                            </select>
+                          </div>
+                          <button type="button" class="js-close-time">Confirm</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    
+                  </div>
+                </div>
+
+                <footer class="button-blc">
+                  <div class="button-item prev">
+                    <button class="prev-btn js-prev-btn">Previous</button>
+                  </div>
+                  <div class="button-item next">
+                    <button class="next-btn  js-next-btn">Next</button>
+                  </div>
+                </footer>
+
+              </div>
+
+              <div class="slider-item" style="display: none;">
+
+                <h2 class="slider-title">Would you like to add our additional services?</h2>
+
+                <div class="services-list">
+
+                  <div class="item">
+                    <div class="img">
+                      <img src="img/addon_1.jpg" alt="img" srcset="img/addon_1_m.jpg 800w">
+                    </div>
+
+                    <div class="text">
+                      <h3 class="text-title">Defender camping equipment</h3>
+                      <p>Hire our Defender 110 and enjoy a holiday with a difference! Our Defender comes packed with all the bits and pieces you need to make the most of yout time in Cornwall.</p>
+                      <p>Not only will you get to drive our fully upgraded Defender 110, but you will also get the chance to experience our incredible all-in-one roof tent, day room and awning, the perfect combo to enjoy our wonderful county.</p>
+                    </div>
+
+                    <div class="info">
+                      <div class="price">£675.00</div>
+                      <p>per day</p>
+                      <span class="total">total £675.00</span>
+
+                      <div class="recommended">Recommended</div>
+
+                      <label class="wrap-checkbox">
+                        <input type="checkbox" name="camping">
+                        <div class="button">
+                          <span class="button-text">Add<span>ed</span></span>
+
+                          <span class="icon"><span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="img">
+                      <img src="img/addon_2.jpg" alt="img" srcset="img/addon_2_m.jpg 800w">
+                    </div>
+
+                    <div class="text">
+                      <h3 class="text-title">Photo & Video Services</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                    </div>
+
+                    <div class="info">
+                      <div class="price">£0.00</div>
+                      <span class="total">total £0.00</span>
+
+                      <div class="unavailable">Unavailable</div>
+
+                      <label class="wrap-checkbox">
+                        <input type="checkbox" name="camping" disabled>
+                        <div class="button">
+                          <span class="button-text">Add<span>ed</span></span>
+
+                          <span class="icon"><span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="img">
+                      <img src="img/addon_3.jpg" alt="img" srcset="img/addon_3_m.jpg 800w">
+                    </div>
+
+                    <div class="text">
+                      <h3 class="text-title">Defender Day Hire</h3>
+                      <p>Our flagship vehicle the D110 Crew Cab. Built for comfort and style, a real head-turner, this one of a kind drive is perfectly constructed to ensure you have the best experience while driving around the Cornish coastline or Woodland roads.</p>
+                    </div>
+
+                    <div class="info">
+                      <div class="price">£775.00</div>
+                      <p>per day</p>
+                      <span class="total">total £775.00</span>
+
+                      <div class="recommended">Recommended</div>
+
+                      <label class="wrap-checkbox">
+                        <input type="checkbox" name="camping">
+                        <div class="button">
+                          <span class="button-text">Add<span>ed</span></span>
+
+                          <span class="icon"><span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="img">
+                      <img src="img/addon_4.jpg" alt="img" srcset="img/addon_4_m.jpg 800w">
+                    </div>
+
+                    <div class="text">
+                      <h3 class="text-title">Photo & Video Services</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                    </div>
+
+                    <div class="info">
+                      <div class="price">£360.00</div>
+                      <p>per day</p>
+                      <span class="total">total £360.00</span>
+
+                      <div class="recommended">Recommended</div>
+
+                      <label class="wrap-checkbox">
+                        <input type="checkbox" name="camping">
+                        <div class="button">
+                          <span class="button-text">Add<span>ed</span></span>
+
+                          <span class="icon"><span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                </div>
+
+                <footer class="button-blc">
+                  <div class="button-item prev">
+                    <button class="prev-btn js-prev-btn">Previous</button>
+                  </div>
+                  <div class="button-item next">
+                    <button class="next-btn  js-next-btn">Next</button>
+                  </div>
+                </footer>
+              </div>
+
+              <div class="slider-item" style="display: none;">
+
+                <h2 class="slider-title">Please check order details and confirm?</h2>
+
+                <div class="wrap-total">
+                  <div class="last-row order">
+                    <div class="row">
+                      <div class="left">Your Order: Self Drive</div>
+                      <div class="right">£500.00</div>
+                    </div>
+                  </div>
+  
+                  <div class="last-row time">
+                    <div class="row">
+                      <div class="left">Pick Up Date and Time</div>
+                      <div class="right">Jul 28, 2021 - 1:00 PM </div>
+                    </div>
+                    <div class="row">
+                      <div class="left">Drop Off Date and Time</div>
+                      <div class="right">Jul 29, 2021 - 11:30 AM </div>
+                    </div>
+                  </div>
+  
+                  <div class="last-row additional">
+                    <h4 class="last-row-title">Additional Services: </h4>
+                    <div class="row">
+                      <div class="left">Personal Driver</div>
+                      <div class="right">£360.00 </div>
+                    </div>
+                    <div class="row">
+                      <div class="left">Сamping equipment</div>
+                      <div class="right">£675.00 </div>
+                    </div>
+                  </div>
+  
+                  <div class="last-row discount">
+                    <div class="row">
+                      <div class="left">Taxes</div>
+                      <div class="right">£0.00</div>
+                    </div>
+                    <div class="row">
+                      <div class="left">Payment Fee</div>
+                      <div class="right">£0.00</div>
+                    </div>
+                    <div class="row discount-row">
+                      <div class="left">Discount</div>
+                      <div class="right">£0.00</div>
+                    </div>
+                  </div>
+  
+                  <div class="last-row total">
+                    <div class="row">
+                      <div class="left">Total Price</div>
+                      <div class="right">£1,535.00 </div>
+                    </div>
+                  </div>
+                </div>
+                
+
+
+                <footer class="button-blc">
+                  <div class="button-item prev">
+                    <button class="prev-btn js-prev-btn">Previous</button>
+                  </div>
+                  <div class="button-item next">
+                    <a href="#" class="next-btn  js-next-btn">Confirm & Pay</a>
+                  </div>
+                </footer>
+
+
+              </div>
+            </div>
+          </form>
+        </div>
+
+       </div>
+     </div>
+    </main>
+  </div>
+  <footer class="footer">
+
+    <div class="container">
+      
+      <p> <strong>WEB DESIGN BY FOCUS FREELANCE | IMAGES FROM @FILMMAKERFOLEY @FOCUS FREELANCE @JOHNKNEEBONEMDIA @CALLUMTHOMPSON @JOSHBILINGTON</strong> </p>
+      <p> <strong>© ALL RIGHTS RESERVED CORNWALL DEFENDER DAYS 2020</strong> </p>
+
+      <div class="Footer-nav-group">
+        <a href="/terms-and-conditions" class="Footer-nav-item">Terms and Conditions</a>
+        <a href="/hire-agreement" class="Footer-nav-item">Hire Agreement</a>
+        <a href="/hire-conditions" class="Footer-nav-item">Hire Conditions</a>
+        <a href="/privacy-policy" class="Footer-nav-item">Privacy Policy</a>
+        <a href="/terms-conditions" class="Footer-nav-item">Insurance Conditions</a>
+        <a href="/insurance-terms-and-conditions-of-rental-agreement" class="Footer-nav-item">Insurance Terms &amp; Conditions of Rental Agreement</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+ 
+  <!-- Add your site or application content here -->
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    $(window).on('load', function(){
+      $('.loader').fadeOut('400');
+    })
+  </script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
+</html>
